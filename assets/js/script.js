@@ -1,11 +1,14 @@
 // Assignment code here
+
+// function that is called by the button click. Returns a string that is the final random password to be printed to the screen.
 var generatePassword = function () {
   var userChoices = getUserInput();
   return makePassword(userChoices);
 }
 
+// function to prompt user for what length password they want and what characters to include. Verifies all input and loops until expected input is received.
+// returns an array containing the desired password length at index 0 and either 0 or 1 at the other indexes to indicate desired character types. 
 var getUserInput = function () {
-
   var lengthPrompt = 0;
   while (lengthPrompt < 8 || lengthPrompt > 128) {
 
@@ -15,6 +18,8 @@ var getUserInput = function () {
     }
   }
 
+  // variables to get user's character choices. Entries in typeChoices will be changed to 1 if a corresponding character type is desired.
+  // choiceCount is used to check if the user has failed to select any option
   var charTypes = ["lowercase", "uppercase", "numeric", "special"];
   var typeChoices = [0, 0, 0, 0];
   var choiceCount = 0;
@@ -43,8 +48,11 @@ var getUserInput = function () {
   return choiceArray;
 }
 
+// function to randomly generate a password with the given parameters. Returns the password as a string.
 var makePassword = function (choices) {
   var pwd = "";
+
+  //charOptions will be an array of all possible character options as chosen by the user
   charOptions = [];
   if (choices[1] === 1) {
     charOptions.push("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
@@ -58,17 +66,20 @@ var makePassword = function (choices) {
   if (choices[4] === 1) {
     charOptions.push(" ", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~");
   }
+
   for (var i = 0; i < choices[0]; i++) {
     pwd = pwd + randomEntry(charOptions);
   }
-
   return pwd
 }
 
+// function called in makePassword(). Returns a random entry from the given array, using Math.random() to generate the random index.
 var randomEntry = function (array) {
   var index = Math.floor(Math.random() * array.length);
   return array[index];
 }
+
+///////////////////////////// Assignment code end ///////////////////////////////////////////////////////////////////////////////////////////
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
