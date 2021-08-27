@@ -5,4 +5,4 @@
 * Handles all possible input
 * Deployed website at https://aaronrobinett.github.io/password-generator/
 
-![](./assets/images/finalscreenshot.png/ "screenshot of finished application")
+![](./assets/images/finalScreenshot.png/ "screenshot of finished application")
